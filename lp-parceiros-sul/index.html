@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BR Sem Fronteiras · Parceria para hospedagens do Sul</title>
+<meta name="description" content="Parceria por permuta para cabanas, pousadas e hospedagens de SC, RS e PR.">
+
+<!-- Meta Pixel (BRSF) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1538083480549400');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1538083480549400&ev=PageView&noscript=1"></noscript>
+
+<style>
+  :root{--bg:#0f1410;--card:#182019;--txt:#f3efe6;--muted:#b9b3a6;--accent:#c98a4b;--wa:#25d366}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:520px;margin:0 auto;padding:24px 16px 48px}
+  h1{font-size:1.9rem;line-height:1.2;margin:8px 0 12px}
+  .tag{color:var(--accent);font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+  p.sub{color:var(--muted);margin-bottom:20px}
+  .proof{background:var(--card);border-left:4px solid var(--accent);padding:14px 16px;border-radius:8px;margin-bottom:20px}
+  .proof strong{font-size:1.4rem;display:block}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+  .gallery img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;background:var(--card)}
+  form{background:var(--card);padding:20px 16px;border-radius:12px}
+  form h2{font-size:1.15rem;margin-bottom:14px}
+  label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+  input{width:100%;padding:14px;border-radius:8px;border:1px solid #2c362d;background:#0f1410;color:var(--txt);font-size:1rem}
+  button{width:100%;margin-top:18px;padding:16px;border:0;border-radius:10px;background:var(--wa);color:#04210f;font-weight:700;font-size:1.05rem;cursor:pointer}
+  .note{color:var(--muted);font-size:.8rem;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <span class="tag">Parceria por permuta · SC, RS e PR</span>
+  <h1>Sua hospedagem merece ser desejada.</h1>
+  <p class="sub">A gente vive a experiência e transforma cada detalhe em reels e fotos com estética premium, que fazem quem vê querer reservar.</p>
+
+  <div class="proof">
+    <strong>+144 mil visualizações</strong>
+    na parceria com a AJ Termas.
+  </div>
+
+  <!-- Troque pelas fotos reais (AJ noite, Domo, Rifugio, Lunnare) -->
+  <div class="gallery">
+    <img src="img/aj-noite.jpg" alt="AJ Termas à noite" loading="lazy">
+    <img src="img/domo.jpg" alt="Domo ao pôr do sol" loading="lazy">
+    <img src="img/rifugio.jpg" alt="Rifugio ao entardecer" loading="lazy">
+    <img src="img/lunnare.jpg" alt="Chalé Lunnare" loading="lazy">
+  </div>
+
+  <form id="lead">
+    <h2>Quero minha hospedagem em destaque</h2>
+    <label for="nome">Seu nome</label>
+    <input id="nome" name="nome" required autocomplete="name">
+    <label for="whats">WhatsApp</label>
+    <input id="whats" name="whats" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(54) 99999-9999">
+    <label for="insta">@ da hospedagem no Instagram</label>
+    <input id="insta" name="insta" required placeholder="@suahospedagem">
+    <button type="submit">Falar no WhatsApp</button>
+    <p class="note">Resposta em até 24h. Sem custo: a parceria é por permuta.</p>
+  </form>
+</main>
+
+<script>
+  // Número de WhatsApp do BR Sem Fronteiras (o mesmo da campanha de WhatsApp de 11/2025)
+  var WA = '555497002623';
+  document.getElementById('lead').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var msg = 'Olá! Quero saber da parceria BR Sem Fronteiras.\n' +
+      'Nome: ' + f.nome.value + '\n' +
+      'WhatsApp: ' + f.whats.value + '\n' +
+      'Hospedagem: ' + f.insta.value;
+    // Evento Lead: era isso que faltava na LP antiga
+    if (window.fbq) fbq('track', 'Lead', { content_name: 'Parceiros Sul' });
+    setTimeout(function () {
+      window.location.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+    }, 300);
+  });
+</script>
+</body>
+</html>
