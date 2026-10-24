@@ -1,0 +1,81 @@
+<!--
+  Pop-up "Veja nosso Instagram" · BR Sem Fronteiras
+  Como usar: cole este bloco inteiro antes de </body> no site.
+  Troque só as 2 linhas de CONFIG abaixo (link do post e @ do perfil).
+  NÃO usar na LP de parceiros: lá o objetivo é o formulário.
+-->
+<div id="brsf-ig-pop" role="dialog" aria-modal="true" aria-label="Nossa última publicação no Instagram" hidden>
+  <div class="brsf-ig-box">
+    <button class="brsf-ig-close" aria-label="Fechar">×</button>
+    <p class="brsf-ig-tag">Novidade no Insta 🌿</p>
+    <h3 class="brsf-ig-title">Olha onde a gente esteve essa semana</h3>
+    <div class="brsf-ig-post"></div>
+    <a class="brsf-ig-btn" target="_blank" rel="noopener">Ver no Instagram</a>
+    <button class="brsf-ig-later">Agora não</button>
+  </div>
+</div>
+
+<style>
+  #brsf-ig-pop{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,14,10,.65);padding:16px;opacity:0;transition:opacity .3s}
+  #brsf-ig-pop[hidden]{display:none}
+  #brsf-ig-pop.show{opacity:1}
+  .brsf-ig-box{position:relative;background:#f8f3ea;color:#1d2a1f;border-radius:16px;max-width:380px;width:100%;
+    max-height:90vh;overflow:auto;padding:22px 18px 16px;text-align:center;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  .brsf-ig-close{position:absolute;top:6px;right:10px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:#6b6457}
+  .brsf-ig-tag{font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#a8652b;margin:0 0 4px}
+  .brsf-ig-title{font-size:1.25rem;margin:0 0 12px;line-height:1.25}
+  .brsf-ig-post{min-height:120px}
+  .brsf-ig-post .instagram-media{margin:0 auto!important;min-width:0!important;width:100%!important}
+  .brsf-ig-btn{display:block;margin-top:12px;padding:14px;border-radius:10px;color:#fff;font-weight:700;text-decoration:none;
+    background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}
+  .brsf-ig-later{margin-top:8px;border:0;background:none;color:#6b6457;font-size:.85rem;cursor:pointer;text-decoration:underline}
+</style>
+
+<script>
+(function () {
+  // ===== CONFIG: troque só estas 2 linhas =====
+  var POST_URL = 'https://www.instagram.com/p/COLE_AQUI_O_CODIGO_DO_POST/';
+  var PERFIL   = 'https://www.instagram.com/SEU_PERFIL/';
+  // ============================================
+  var DELAY_MS = 8000;              // abre após 8 segundos no site
+  var DIAS_SEM_REPETIR = 3;         // não mostra de novo por 3 dias
+  var KEY = 'brsf_ig_pop_' + POST_URL; // post novo = pop-up volta a aparecer
+
+  try {
+    var last = +localStorage.getItem(KEY) || 0;
+    if (Date.now() - last < DIAS_SEM_REPETIR * 864e5) return;
+  } catch (e) {}
+
+  var pop = document.getElementById('brsf-ig-pop');
+  if (!pop) return;
+  pop.querySelector('.brsf-ig-btn').href = PERFIL;
+  pop.querySelector('.brsf-ig-post').innerHTML =
+    '<blockquote class="instagram-media" data-instgrm-permalink="' + POST_URL +
+    '" data-instgrm-version="14"></blockquote>';
+
+  function fechar() {
+    pop.classList.remove('show');
+    setTimeout(function () { pop.hidden = true; }, 300);
+    try { localStorage.setItem(KEY, Date.now()); } catch (e) {}
+  }
+  pop.querySelector('.brsf-ig-close').onclick = fechar;
+  pop.querySelector('.brsf-ig-later').onclick = fechar;
+  pop.querySelector('.brsf-ig-btn').addEventListener('click', function () {
+    if (window.fbq) fbq('trackCustom', 'CliqueInstagramPopup');
+    fechar();
+  });
+  pop.addEventListener('click', function (e) { if (e.target === pop) fechar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) fechar(); });
+
+  setTimeout(function () {
+    pop.hidden = false;
+    requestAnimationFrame(function () { pop.classList.add('show'); });
+    var s = document.createElement('script');
+    s.async = true; s.src = 'https://www.instagram.com/embed.js';
+    s.onload = function () { if (window.instgrm) instgrm.Embeds.process(); };
+    document.body.appendChild(s);
+  }, DELAY_MS);
+})();
+</script>
