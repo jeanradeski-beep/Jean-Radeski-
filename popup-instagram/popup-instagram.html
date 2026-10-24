@@ -36,8 +36,8 @@
 <script>
 (function () {
   // ===== CONFIG: troque só estas 2 linhas =====
-  var POST_URL = 'https://www.instagram.com/p/COLE_AQUI_O_CODIGO_DO_POST/';
-  var PERFIL   = 'https://www.instagram.com/SEU_PERFIL/';
+  var POST_URL = 'https://www.instagram.com/p/De4hBXLlMQw/';
+  var PERFIL   = ''; // ex: 'https://www.instagram.com/brsemfronteiras/' (vazio = botão abre o post)
   // ============================================
   var DELAY_MS = 8000;              // abre após 8 segundos no site
   var DIAS_SEM_REPETIR = 3;         // não mostra de novo por 3 dias
@@ -50,7 +50,7 @@
 
   var pop = document.getElementById('brsf-ig-pop');
   if (!pop) return;
-  pop.querySelector('.brsf-ig-btn').href = PERFIL;
+  pop.querySelector('.brsf-ig-btn').href = PERFIL || POST_URL;
   pop.querySelector('.brsf-ig-post').innerHTML =
     '<blockquote class="instagram-media" data-instgrm-permalink="' + POST_URL +
     '" data-instgrm-version="14"></blockquote>';
