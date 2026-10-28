@@ -39,7 +39,7 @@ STORIES = [
      "Detalhes que encantam.", "", {"h": 620}),
     ("spa-mata.jpg", "center 70%", "top", "Spa na mata",
      "Ofurô e cama suspensa,<br>imerso na mata.", "Ao lado do rio, ao som das quedas d'água.", {}),
-    ("banheira.jpg", "center 70%", "top", "Só vocês dois",
+    ("banheira.jpg", "center 70%", "top", "Um espaço para relaxar",
      "Entre samambaias,<br>sem pressa.", "", {}),
 ]
 
