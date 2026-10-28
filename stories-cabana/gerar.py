@@ -16,11 +16,13 @@ HTML.mkdir(exist_ok=True)
 # foto, foco da foto, faixa ("top"/"low"), chamada pequena, título, apoio, extra
 STORIES = [
     ("drone.jpg", "center", "top", "Salto Veloso",
-     "Uma experiência privativa<br>em meio à mata.", "", {}),
+     "Uma experiência privativa<br>em meio à mata.", "",
+     {"rodape": [("Videira", "30 km"), ("Caçador", "60 km"), ("Joaçaba", "85 km"),
+                 ("Curitiba", "370 km"), ("Florianópolis", "420 km")]}),
     ("ponte.jpg", "center 40%", "low", "O caminho",
-     "Atravesse a ponte.", "O mundo lá fora fica pra trás.", {}),
+     "Atravesse a ponte.", "Todo o ambiente cercado pela natureza.", {}),
     ("cabana-noite.jpg", "center 60%", "top", "Arquitetura A-frame",
-     "Moderna, em vidro,<br>refletindo suas luzes quentes.", "", {}),
+     "Moderna, em vidro,<br>refletindo suas luzes quentes.", "", {"descer": 200}),
     ("cama.jpg", "center 60%", "top", "Futon com massagem",
      "Um futon perfeito, com vista<br>privilegiada para a mata.", "", {}),
     ("hidro.jpg", "center 30%", "low", "Hidromassagem",
@@ -30,13 +32,15 @@ STORIES = [
     ("adega.jpg", "center", "top", "Adega completa",
      "Pra brindar<br>cada momento.", "", {}),
     ("pizza.jpg", "center 75%", "top", "Cardápio da cabana",
-     "Opções congeladas, deliciosas<br>e prontas para fazer.", "", {"inset": "risoto.jpg"}),
+     "Opções congeladas<br>e deliciosas.", "", {}),
+    ("risoto.jpg", "center 60%", "top", "Praticidade",
+     "Opções práticas e<br>prontas para fazer.", "", {}),
     ("lareira.jpg", "center 60%", "low", "Lareira",
      "Detalhes que encantam.", "", {"h": 620}),
     ("spa-mata.jpg", "center 70%", "top", "Spa na mata",
      "Ofurô e cama suspensa,<br>imerso na mata.", "Ao lado do rio, ao som das quedas d'água.", {}),
     ("banheira.jpg", "center 70%", "top", "Só vocês dois",
-     "Entre samambaias,<br>sem pressa.", "No próximo story: o tour completo", {"cta": True}),
+     "Entre samambaias,<br>sem pressa.", "", {}),
 ]
 
 CSS = """
@@ -69,6 +73,12 @@ p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-h
 .cta { display:inline-flex; margin-top:38px; padding:22px 38px; border-radius:60px; background:#E9A15B;
   color:#1B140D; font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px;
   letter-spacing:.14em; text-transform:uppercase; }
+.rodape { position:absolute; left:90px; right:90px; bottom:250px; color:#F6EFE4; }
+.rodape .linha { height:1px; background:rgba(246,239,228,.55); margin-bottom:34px; }
+.rodape .cidades { display:flex; flex-wrap:wrap; justify-content:space-between; row-gap:26px; }
+.rodape .c { width:31%; font-family:'Montserrat',sans-serif; }
+.rodape .c b { display:block; font-weight:600; font-size:38px; color:#E9A15B; }
+.rodape .c span { font-weight:500; font-size:22px; letter-spacing:.22em; text-transform:uppercase; color:rgba(246,239,228,.85); }
 .inset { position:absolute; left:60px; bottom:170px; width:290px; height:290px; object-fit:cover;
   border-radius:10px; border:6px solid #F6EFE4; box-shadow:0 18px 50px rgba(0,0,0,.45); transform:rotate(-3deg); }
 """
@@ -77,11 +87,17 @@ p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-h
 def html(foto, pos, faixa, kicker, titulo, apoio, extra, n, total):
     apoio_html = f"<p>{apoio}</p>" if apoio else ""
     cta = '<div class="cta">Toque pra ver &nbsp;→</div>' if extra.get("cta") else ""
+    rodape = ""
+    if extra.get("rodape"):
+        cidades = "".join(f'<div class="c"><b>{km}</b><span>{c}</span></div>' for c, km in extra["rodape"])
+        rodape = ('<div class="blur low" style="height:620px"></div>'
+                  f'<div class="rodape"><div class="linha"></div><div class="cidades">{cidades}</div></div>')
     inset = ""
     if extra.get("inset") and (FOTOS / extra["inset"]).exists():
         inset = f'<img class="inset" src="{(FOTOS / extra["inset"]).as_uri()}">'
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
-<img class="bg" src="{(FOTOS / foto).as_uri()}" style="object-position:{pos}">
+<img class="bg" src="{(FOTOS / foto).as_uri()}" style="object-position:{pos};transform:translateY({extra.get('descer', 0)}px)">
+{rodape}
 <div class="blur {faixa}" style="height:{extra.get('h', 820)}px"></div>
 {inset}
 <div class="count">{n:02d} / {total:02d}</div>
