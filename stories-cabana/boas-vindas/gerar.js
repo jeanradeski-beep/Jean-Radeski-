@@ -4,6 +4,7 @@ const path = require('path');
 const cores = {
   dourado: { txt: 'linear-gradient(180deg,#F3D98B 0%,#D4A743 45%,#A87B25 75%,#E6C46A 100%)', linha: '#C9A045' },
   preto:   { txt: 'linear-gradient(180deg,#111 0%,#111 100%)', linha: '#111' },
+  branco:  { txt: 'linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 100%)', linha: '#FFFFFF' },
 };
 const html = (c) => `<!doctype html><html><head><meta charset="utf-8"><style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Italiana&display=block');
