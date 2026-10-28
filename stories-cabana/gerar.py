@@ -16,7 +16,7 @@ STORIES = [
     ("hidro.jpg", "center 30%", "Hidromassagem<br>com vista para a mata.", ""),
     ("cozinha.jpg", "center", "Cozinha completa para você<br>não se preocupar com nada.", ""),
     ("adega.jpg", "center 45%", "Adega completa.", ""),
-    ("cardapio", "", "A cabana tem deliciosas opções de cardápio,<br>práticas e prontas para fazer.", ""),
+    ("cardapio", "", "Opções de alimentação congeladas,<br>deliciosas e prontas para fazer.", ""),
     ("lareira.jpg", "center 40%", "Detalhes que encantam.", ""),
     ("spa-mata.jpg", "center 55%", "Um spa com ofurô e cama suspensa,<br>imerso na mata, ao lado do rio<br>e ao som das quedas d'água.", ""),
     ("banheira.jpg", "center 40%", "Ofurô e cama suspensa,<br>entre samambaias.", "Tour completo no próximo story"),
