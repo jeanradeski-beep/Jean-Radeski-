@@ -60,7 +60,7 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#0f1a14; }
   -webkit-mask-image:linear-gradient(0deg,#000 0%,#000 62%,transparent 100%); mask-image:linear-gradient(0deg,#000 0%,#000 62%,transparent 100%); }
 
 .box { position:absolute; left:90px; right:90px; color:#F6EFE4; }
-.box.top { top:230px; }
+.box.top { top:170px; }
 .box.low { bottom:300px; }
 .kicker { font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px; letter-spacing:.32em;
   text-transform:uppercase; color:#E9A15B; display:flex; align-items:center; gap:22px; margin-bottom:30px; text-shadow:0 1px 10px rgba(0,0,0,.7); }
@@ -108,7 +108,7 @@ def html(foto, pos, faixa, kicker, titulo, apoio, extra, n, total):
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
 <img class="bg" src="{(FOTOS / foto).as_uri()}" style="object-position:{pos};transform:translateY({extra.get('descer', 0)}px)">
 {rodape}
-<div class="blur {faixa}" style="height:{extra.get('h', 680)}px"></div>
+<div class="blur {faixa}" style="height:{extra.get('h', 620)}px"></div>
 {inset}
 <div class="box {faixa}"><div class="kicker">{kicker}</div><h1>{titulo}</h1>{apoio_html}{cta}</div>
 </body></html>"""
