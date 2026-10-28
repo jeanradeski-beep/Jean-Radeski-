@@ -18,7 +18,7 @@ STORIES = [
     ("drone.jpg", "center", "top", "Salto Veloso",
      "Uma experiência privativa<br>em meio à mata.", "",
      {"rodape": [("Videira", "30 km"), ("Caçador", "60 km"), ("Joaçaba", "85 km"),
-                 ("Curitiba", "370 km"), ("Florianópolis", "420 km")]}),
+                 ("Curitiba", "370 km"), ("Floripa", "420 km")]}),
     ("ponte.jpg", "center 40%", "low", "O caminho",
      "Atravesse a ponte.", "Todo o ambiente cercado pela natureza.", {}),
     ("cabana-noite.jpg", "center 60%", "top", "Arquitetura A-frame",
@@ -73,12 +73,16 @@ p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-h
 .cta { display:inline-flex; margin-top:38px; padding:22px 38px; border-radius:60px; background:#E9A15B;
   color:#1B140D; font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px;
   letter-spacing:.14em; text-transform:uppercase; }
-.rodape { position:absolute; left:90px; right:90px; bottom:250px; color:#F6EFE4; }
-.rodape .linha { height:1px; background:rgba(246,239,228,.55); margin-bottom:34px; }
-.rodape .cidades { display:flex; flex-wrap:wrap; justify-content:space-between; row-gap:26px; }
-.rodape .c { width:31%; font-family:'Montserrat',sans-serif; }
-.rodape .c b { display:block; font-weight:600; font-size:38px; color:#E9A15B; }
-.rodape .c span { font-weight:500; font-size:22px; letter-spacing:.22em; text-transform:uppercase; color:rgba(246,239,228,.85); }
+.rodape { position:absolute; left:90px; right:90px; bottom:300px; color:#F6EFE4; height:120px; }
+.rodape .trilho { position:absolute; left:0; right:0; top:50px; height:1px; background:rgba(246,239,228,.6); }
+.rodape .pt { position:absolute; top:0; height:120px; font-family:'Montserrat',sans-serif; white-space:nowrap; }
+.rodape .pt::before { content:''; position:absolute; top:44px; left:-6px; width:11px; height:11px; border-radius:50%;
+  background:#E9A15B; box-shadow:0 0 0 5px rgba(233,161,91,.22); }
+.rodape .pt .km { position:absolute; top:0; font-weight:600; font-size:26px; color:#E9A15B; transform:translateX(-50%); }
+.rodape .pt .nome { position:absolute; top:80px; font-weight:500; font-size:19px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(246,239,228,.88); transform:translateX(-50%); }
+.rodape .pt.first .km, .rodape .pt.first .nome { transform:none; left:-6px; }
+.rodape .pt.last .km, .rodape .pt.last .nome { transform:none; right:-6px; }
 .inset { position:absolute; left:60px; bottom:170px; width:290px; height:290px; object-fit:cover;
   border-radius:10px; border:6px solid #F6EFE4; box-shadow:0 18px 50px rgba(0,0,0,.45); transform:rotate(-3deg); }
 """
@@ -89,9 +93,15 @@ def html(foto, pos, faixa, kicker, titulo, apoio, extra, n, total):
     cta = '<div class="cta">Toque pra ver &nbsp;→</div>' if extra.get("cta") else ""
     rodape = ""
     if extra.get("rodape"):
-        cidades = "".join(f'<div class="c"><b>{km}</b><span>{c}</span></div>' for c, km in extra["rodape"])
+        pts = extra["rodape"]
+        cidades = ""
+        for i, (c, km) in enumerate(pts):
+            x = i / (len(pts) - 1) * 100
+            cls = "first" if i == 0 else "last" if i == len(pts) - 1 else ""
+            cidades += (f'<div class="pt {cls}" style="left:{x}%"><span class="km">{km}</span>'
+                        f'<span class="nome">{c}</span></div>')
         rodape = ('<div class="blur low" style="height:620px"></div>'
-                  f'<div class="rodape"><div class="linha"></div><div class="cidades">{cidades}</div></div>')
+                  f'<div class="rodape"><div class="trilho"></div>{cidades}</div>')
     inset = ""
     if extra.get("inset") and (FOTOS / extra["inset"]).exists():
         inset = f'<img class="inset" src="{(FOTOS / extra["inset"]).as_uri()}">'
@@ -100,7 +110,6 @@ def html(foto, pos, faixa, kicker, titulo, apoio, extra, n, total):
 {rodape}
 <div class="blur {faixa}" style="height:{extra.get('h', 820)}px"></div>
 {inset}
-<div class="count">{n:02d} / {total:02d}</div>
 <div class="box {faixa}"><div class="kicker">{kicker}</div><h1>{titulo}</h1>{apoio_html}{cta}</div>
 </body></html>"""
 

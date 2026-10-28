@@ -28,12 +28,16 @@ p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-h
 .cta { display:inline-flex; margin-top:38px; padding:22px 38px; border-radius:60px; background:#E9A15B;
   color:#1B140D; font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px;
   letter-spacing:.14em; text-transform:uppercase; }
-.rodape { position:absolute; left:90px; right:90px; bottom:250px; color:#F6EFE4; }
-.rodape .linha { height:1px; background:rgba(246,239,228,.55); margin-bottom:34px; }
-.rodape .cidades { display:flex; flex-wrap:wrap; justify-content:space-between; row-gap:26px; }
-.rodape .c { width:31%; font-family:'Montserrat',sans-serif; }
-.rodape .c b { display:block; font-weight:600; font-size:38px; color:#E9A15B; }
-.rodape .c span { font-weight:500; font-size:22px; letter-spacing:.22em; text-transform:uppercase; color:rgba(246,239,228,.85); }
+.rodape { position:absolute; left:90px; right:90px; bottom:300px; color:#F6EFE4; height:120px; }
+.rodape .trilho { position:absolute; left:0; right:0; top:50px; height:1px; background:rgba(246,239,228,.6); }
+.rodape .pt { position:absolute; top:0; height:120px; font-family:'Montserrat',sans-serif; white-space:nowrap; }
+.rodape .pt::before { content:''; position:absolute; top:44px; left:-6px; width:11px; height:11px; border-radius:50%;
+  background:#E9A15B; box-shadow:0 0 0 5px rgba(233,161,91,.22); }
+.rodape .pt .km { position:absolute; top:0; font-weight:600; font-size:26px; color:#E9A15B; transform:translateX(-50%); }
+.rodape .pt .nome { position:absolute; top:80px; font-weight:500; font-size:19px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(246,239,228,.88); transform:translateX(-50%); }
+.rodape .pt.first .km, .rodape .pt.first .nome { transform:none; left:-6px; }
+.rodape .pt.last .km, .rodape .pt.last .nome { transform:none; right:-6px; }
 .inset { position:absolute; left:60px; bottom:170px; width:290px; height:290px; object-fit:cover;
   border-radius:10px; border:6px solid #F6EFE4; box-shadow:0 18px 50px rgba(0,0,0,.45); transform:rotate(-3deg); }
 </style></head><body>
@@ -41,6 +45,5 @@ p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-h
 
 <div class="blur top" style="height:820px"></div>
 
-<div class="count">06 / 11</div>
 <div class="box top"><div class="kicker">Cozinha completa</div><h1>Para você não se<br>preocupar com nada.</h1></div>
 </body></html>
