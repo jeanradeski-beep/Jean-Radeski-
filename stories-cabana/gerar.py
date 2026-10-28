@@ -17,7 +17,7 @@ HTML.mkdir(exist_ok=True)
 STORIES = [
     ("drone.jpg", "center", "top", "Salto Veloso",
      "Uma experiência privativa<br>em meio à mata.", "",
-     {"rodape": [("Videira", "30 km"), ("Caçador", "60 km"), ("Joaçaba", "85 km"),
+     {"rodape": [("Videira", "30 km"), ("Joaçaba", "85 km"), ("Chapecó", "230 km"),
                  ("Curitiba", "370 km"), ("Floripa", "420 km")]}),
     ("ponte.jpg", "center 40%", "low", "O caminho",
      "Atravesse a ponte.", "Todo o ambiente cercado pela natureza.", {}),
@@ -73,7 +73,7 @@ p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-h
 .cta { display:inline-flex; margin-top:38px; padding:22px 38px; border-radius:60px; background:#E9A15B;
   color:#1B140D; font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px;
   letter-spacing:.14em; text-transform:uppercase; }
-.rodape { position:absolute; left:90px; right:90px; bottom:300px; color:#F6EFE4; height:120px; }
+.rodape { position:absolute; left:90px; right:90px; bottom:190px; color:#F6EFE4; height:120px; }
 .rodape .trilho { position:absolute; left:0; right:0; top:50px; height:1px; background:rgba(246,239,228,.6); }
 .rodape .pt { position:absolute; top:0; height:120px; font-family:'Montserrat',sans-serif; white-space:nowrap; }
 .rodape .pt::before { content:''; position:absolute; top:44px; left:-6px; width:11px; height:11px; border-radius:50%;
