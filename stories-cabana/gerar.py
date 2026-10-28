@@ -6,65 +6,67 @@ BASE = Path(__file__).parent
 OUT = BASE / "prontos"
 OUT.mkdir(exist_ok=True)
 
-# (foto, posição da foto, posição do texto, kicker, título, apoio)
+# (foto, posição da foto, texto principal, linha pequena opcional)
+# Estilo discreto: frase curta e informativa, centralizada, sem destaque exagerado.
 STORIES = [
-    ("drone.jpg", "center", "low", "Escondida na Serra",
-     "No meio da mata<br>existe uma luz acesa…", "Consegue encontrar?"),
-    ("ponte.jpg", "center 40%", "low", "O caminho",
-     "Atravesse a ponte.", "O mundo lá fora fica pra trás."),
-    ("cabana-noite.jpg", "center 60%", "top", "Quando anoitece",
-     "Ela acende<br>pra você.", "Paredes de vidro. Floresta ao redor."),
-    ("cama.jpg", "center", "low", "Pra dormir",
-     "Abraçado pela<br>madeira e pelo silêncio.", "Sem despertador. Sem pressa."),
-    ("hidro.jpg", "center 30%", "low", "Hidro aquecida",
-     "Um banho com<br>vista pra floresta.", "A chuva do lado de fora, o calor aqui dentro."),
-    ("cozinha.jpg", "center", "top", "Cozinha completa",
-     "Cada detalhe<br>pensado pra você.", "É só chegar e se sentir em casa."),
-    ("risoto.jpg", "center 60%", "top", "Até o jantar",
-     "já te espera.", "Risoto de tomate seco · pronto em 25 min"),
-    ("lareira.jpg", "center 40%", "top", "Fim de tarde",
-     "Lareira acesa,<br>flores na mesa.", "E um livro pra deixar o seu recado."),
-    ("spa-mata.jpg", "center 55%", "top", "Mas ainda não acabou…",
-     "Tem um espaço<br>secreto na mata.", "Siga as luzes."),
-    ("banheira.jpg", "center 40%", "top", "Banheira ao ar livre",
-     "Entre samambaias.<br>Só vocês dois.", "No próximo story: o tour completo"),
+    ("drone.jpg", "center", "Localizado em Salto Veloso,<br>uma experiência privativa em meio à mata.", "Salto Veloso"),
+    ("ponte.jpg", "center 40%", "O caminho até a cabana<br>já faz parte da experiência.", ""),
+    ("cabana-noite.jpg", "center 60%", "Arquitetura A-frame moderna, em vidro,<br>que reflete suas luzes quentes.", ""),
+    ("cama.jpg", "center", "Um futon perfeito, com massagem<br>e vista privilegiada para a mata.", ""),
+    ("hidro.jpg", "center 30%", "Hidromassagem<br>com vista para a mata.", ""),
+    ("cozinha.jpg", "center", "Cozinha completa para você<br>não se preocupar com nada.", ""),
+    ("adega.jpg", "center 45%", "Adega completa.", ""),
+    ("cardapio", "", "A cabana tem deliciosas opções de cardápio,<br>práticas e prontas para fazer.", ""),
+    ("lareira.jpg", "center 40%", "Detalhes que encantam.", ""),
+    ("spa-mata.jpg", "center 55%", "Um spa com ofurô e cama suspensa,<br>imerso na mata, ao lado do rio<br>e ao som das quedas d'água.", ""),
+    ("banheira.jpg", "center 40%", "Ofurô e cama suspensa,<br>entre samambaias.", "Tour completo no próximo story"),
 ]
 
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Montserrat:wght@500;600&display=block');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500&display=block');
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { width:1080px; height:1920px; overflow:hidden; background:#0f1a14; }
 .bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.shade { position:absolute; inset:0; }
-.shade.low { background:linear-gradient(180deg, rgba(10,18,13,.35) 0%, rgba(10,18,13,0) 22%, rgba(10,18,13,0) 45%, rgba(10,18,13,.88) 82%, rgba(10,18,13,.95) 100%); }
-.shade.top { background:linear-gradient(180deg, rgba(10,18,13,.92) 0%, rgba(10,18,13,.75) 26%, rgba(10,18,13,0) 50%, rgba(10,18,13,0) 82%, rgba(10,18,13,.45) 100%); }
-.box { position:absolute; left:90px; right:90px; color:#F6EFE4; }
-.box.low { bottom:330px; }
-.box.top { top:250px; }
-.kicker { font-family:'Montserrat',sans-serif; font-weight:600; font-size:30px; letter-spacing:.32em;
-  text-transform:uppercase; color:#E9A15B; display:flex; align-items:center; gap:22px; margin-bottom:34px; }
-.kicker::before { content:''; width:70px; height:2px; background:#E9A15B; }
-h1 { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:104px;
-  line-height:1.02; text-shadow:0 4px 30px rgba(0,0,0,.45); }
-p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:36px; line-height:1.4;
-  margin-top:36px; color:rgba(246,239,228,.88); }
-.count { position:absolute; top:150px; right:90px; font-family:'Montserrat',sans-serif; font-weight:600;
-  font-size:24px; letter-spacing:.25em; color:rgba(246,239,228,.75); }
-.cta { display:inline-flex; align-items:center; gap:18px; margin-top:44px; padding:24px 40px;
-  border-radius:60px; background:#E9A15B; color:#1B140D; font-family:'Montserrat',sans-serif;
-  font-weight:600; font-size:30px; letter-spacing:.14em; text-transform:uppercase; }
+.shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,14,10,0) 55%, rgba(8,14,10,.55) 78%, rgba(8,14,10,.7) 100%); }
+.box { position:absolute; left:80px; right:80px; bottom:340px; text-align:center; color:#F4EEE4; }
+.txt { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:50px; line-height:1.3;
+  text-shadow:0 2px 18px rgba(0,0,0,.55); }
+.tag { font-family:'Montserrat',sans-serif; font-weight:500; font-size:22px; letter-spacing:.38em;
+  text-transform:uppercase; color:rgba(244,238,228,.78); margin-top:30px; text-shadow:0 2px 12px rgba(0,0,0,.6); }
+.line { width:46px; height:1px; background:rgba(244,238,228,.6); margin:0 auto 30px; }
 """
 
 
-def html(foto, pos, where, kicker, titulo, apoio, n):
-    cta = '<div class="cta">Toque pra ver &nbsp;→</div>' if n == 10 else ""
-    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
-<img class="bg" src="{(BASE / 'fotos' / foto).as_uri()}" style="object-position:{pos}">
-<div class="shade {where}"></div>
-<div class="count">{n:02d} / 10</div>
-<div class="box {where}"><div class="kicker">{kicker}</div><h1>{titulo}</h1><p>{apoio}</p>{cta}</div>
+CARDAPIO = ["risoto.jpg", "pizza.jpg"]  # fotos do quadrado do story de cardápio
+
+
+def html_cardapio(texto):
+    fotos = [f for f in CARDAPIO if (BASE / "fotos" / f).exists()]
+    lado = 820 if len(fotos) == 1 else 440
+    quadros = "".join(
+        f'<img src="{(BASE / "fotos" / f).as_uri()}" style="width:{lado}px;height:{lado}px;object-fit:cover;border-radius:6px">'
+        for f in fotos)
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}
+body {{ background:#17231c; }}
+.grid {{ position:absolute; top:330px; left:0; right:0; display:flex; justify-content:center; gap:28px; }}
+</style></head><body>
+<div class="grid">{quadros}</div>
+<div class="box"><div class="line"></div><div class="txt">{texto}</div></div>
 </body></html>"""
 
+
+def html(foto, pos, texto, tag, n):
+    if foto == "cardapio":
+        return html_cardapio(texto)
+    tag_html = f'<div class="tag">{tag}</div>' if tag else ""
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
+<img class="bg" src="{(BASE / 'fotos' / foto).as_uri()}" style="object-position:{pos}">
+<div class="shade"></div>
+<div class="box"><div class="line"></div><div class="txt">{texto}</div>{tag_html}</div>
+</body></html>"""
+
+
+STORIES = [s for s in STORIES if s[0] == "cardapio" or (BASE / "fotos" / s[0]).exists()]
 
 HTML = BASE / "html"
 HTML.mkdir(exist_ok=True)

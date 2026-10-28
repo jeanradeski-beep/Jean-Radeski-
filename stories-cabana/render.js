@@ -4,7 +4,8 @@ const path = require('path');
 (async () => {
   const b = await chromium.launch();
   const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
-  for (let i = 1; i <= 10; i++) {
+  const n_ = require('fs').readdirSync(path.join(__dirname,'html')).filter(f=>f.endsWith('.html')).length;
+  for (let i = 1; i <= n_; i++) {
     const n = String(i).padStart(2, '0');
     await pg.goto('file://' + path.join(__dirname, 'html', `story-${n}.html`), { waitUntil: 'networkidle' });
     await pg.evaluate(() => document.fonts.ready);
