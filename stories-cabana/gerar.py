@@ -17,8 +17,8 @@ HTML.mkdir(exist_ok=True)
 STORIES = [
     ("drone.jpg", "center", "top", "Salto Veloso",
      "Uma experiência privativa<br>em meio à mata.", "",
-     {"rodape": [("Videira", "30 km"), ("Joaçaba", "85 km"), ("Chapecó", "230 km"),
-                 ("Curitiba", "370 km"), ("Floripa", "420 km")]}),
+     {"rodape": [("Videira", "51 km"), ("Joaçaba", "54 km"), ("Chapecó", "180 km"),
+                 ("Curitiba", "346 km"), ("Floripa", "445 km")]}),
     ("ponte.jpg", "center 40%", "low", "O caminho",
      "Atravesse a ponte.", "Todo o ambiente cercado pela natureza.", {}),
     ("cabana-noite.jpg", "center 60%", "top", "Arquitetura A-frame",
@@ -60,8 +60,8 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#0f1a14; }
   -webkit-mask-image:linear-gradient(0deg,#000 0%,#000 62%,transparent 100%); mask-image:linear-gradient(0deg,#000 0%,#000 62%,transparent 100%); }
 
 .box { position:absolute; left:90px; right:90px; color:#F6EFE4; }
-.box.top { top:170px; }
-.box.low { bottom:300px; }
+.box.top { top:135px; }
+.box.low { bottom:200px; }
 .kicker { font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px; letter-spacing:.32em;
   text-transform:uppercase; color:#E9A15B; display:flex; align-items:center; gap:22px; margin-bottom:30px; text-shadow:0 1px 10px rgba(0,0,0,.7); }
 .kicker::before { content:''; width:70px; height:2px; background:#E9A15B; }
