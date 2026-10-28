@@ -36,9 +36,9 @@ STORIES = [
     ("risoto.jpg", "center 60%", "top", "Praticidade",
      "Opções práticas e<br>prontas para fazer.", "", {}),
     ("lareira.jpg", "center 60%", "low", "Lareira",
-     "Detalhes que encantam.", "", {"h": 620}),
+     "Detalhes que encantam.", "", {"h": 560}),
     ("spa-mata.jpg", "center 70%", "top", "Spa na mata",
-     "Ofurô e cama suspensa,<br>imerso na mata.", "Ao lado do rio, ao som das quedas d'água.", {}),
+     "Banheira e cama suspensa,<br>imerso na mata.", "Ao lado do rio, ao som das quedas d'água.", {}),
     ("banheira.jpg", "center 70%", "top", "Um espaço para relaxar",
      "Entre samambaias,<br>sem pressa.", "", {}),
 ]
@@ -51,21 +51,21 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#0f1a14; }
 
 /* faixa com desfoque verde */
 .blur { position:absolute; left:0; right:0; height:820px;
-  backdrop-filter: blur(26px) saturate(1.1); -webkit-backdrop-filter: blur(26px) saturate(1.1); }
+  backdrop-filter: blur(14px) saturate(1.05); -webkit-backdrop-filter: blur(14px) saturate(1.05); }
 .blur.top { top:0;
-  background:linear-gradient(180deg, rgba(16,38,26,.92) 0%, rgba(16,38,26,.78) 45%, rgba(16,38,26,0) 100%);
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 50%,transparent 100%); mask-image:linear-gradient(180deg,#000 0%,#000 50%,transparent 100%); }
+  background:linear-gradient(180deg, rgba(16,38,26,.72) 0%, rgba(16,38,26,.5) 60%, rgba(16,38,26,0) 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 62%,transparent 100%); mask-image:linear-gradient(180deg,#000 0%,#000 62%,transparent 100%); }
 .blur.low { bottom:0;
-  background:linear-gradient(0deg, rgba(16,38,26,.92) 0%, rgba(16,38,26,.78) 45%, rgba(16,38,26,0) 100%);
-  -webkit-mask-image:linear-gradient(0deg,#000 0%,#000 50%,transparent 100%); mask-image:linear-gradient(0deg,#000 0%,#000 50%,transparent 100%); }
+  background:linear-gradient(0deg, rgba(16,38,26,.72) 0%, rgba(16,38,26,.5) 60%, rgba(16,38,26,0) 100%);
+  -webkit-mask-image:linear-gradient(0deg,#000 0%,#000 62%,transparent 100%); mask-image:linear-gradient(0deg,#000 0%,#000 62%,transparent 100%); }
 
 .box { position:absolute; left:90px; right:90px; color:#F6EFE4; }
 .box.top { top:230px; }
 .box.low { bottom:300px; }
 .kicker { font-family:'Montserrat',sans-serif; font-weight:600; font-size:28px; letter-spacing:.32em;
-  text-transform:uppercase; color:#E9A15B; display:flex; align-items:center; gap:22px; margin-bottom:30px; }
+  text-transform:uppercase; color:#E9A15B; display:flex; align-items:center; gap:22px; margin-bottom:30px; text-shadow:0 1px 10px rgba(0,0,0,.7); }
 .kicker::before { content:''; width:70px; height:2px; background:#E9A15B; }
-h1 { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:84px; line-height:1.05; }
+h1 { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:84px; line-height:1.05; text-shadow:0 2px 24px rgba(0,0,0,.45); }
 p { font-family:'Montserrat',sans-serif; font-weight:500; font-size:34px; line-height:1.4;
   margin-top:30px; color:rgba(246,239,228,.88); }
 .count { position:absolute; top:150px; right:90px; font-family:'Montserrat',sans-serif; font-weight:600;
@@ -100,7 +100,7 @@ def html(foto, pos, faixa, kicker, titulo, apoio, extra, n, total):
             cls = "first" if i == 0 else "last" if i == len(pts) - 1 else ""
             cidades += (f'<div class="pt {cls}" style="left:{x}%"><span class="km">{km}</span>'
                         f'<span class="nome">{c}</span></div>')
-        rodape = ('<div class="blur low" style="height:620px"></div>'
+        rodape = ('<div class="blur low" style="height:500px"></div>'
                   f'<div class="rodape"><div class="trilho"></div>{cidades}</div>')
     inset = ""
     if extra.get("inset") and (FOTOS / extra["inset"]).exists():
@@ -108,7 +108,7 @@ def html(foto, pos, faixa, kicker, titulo, apoio, extra, n, total):
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
 <img class="bg" src="{(FOTOS / foto).as_uri()}" style="object-position:{pos};transform:translateY({extra.get('descer', 0)}px)">
 {rodape}
-<div class="blur {faixa}" style="height:{extra.get('h', 820)}px"></div>
+<div class="blur {faixa}" style="height:{extra.get('h', 680)}px"></div>
 {inset}
 <div class="box {faixa}"><div class="kicker">{kicker}</div><h1>{titulo}</h1>{apoio_html}{cta}</div>
 </body></html>"""
