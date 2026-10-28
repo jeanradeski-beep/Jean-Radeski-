@@ -42,13 +42,15 @@ CARDAPIO = ["risoto.jpg", "pizza.jpg"]  # fotos do quadrado do story de cardápi
 
 def html_cardapio(texto):
     fotos = [f for f in CARDAPIO if (BASE / "fotos" / f).exists()]
-    lado = 820 if len(fotos) == 1 else 440
+    lado = 820 if len(fotos) == 1 else 560
+    foco = {"pizza.jpg": "center 75%"}
     quadros = "".join(
-        f'<img src="{(BASE / "fotos" / f).as_uri()}" style="width:{lado}px;height:{lado}px;object-fit:cover;border-radius:6px">'
+        f'<img src="{(BASE / "fotos" / f).as_uri()}" style="width:{lado}px;height:{lado}px;object-fit:cover;'
+        f'object-position:{foco.get(f, "center")};border-radius:6px">'
         for f in fotos)
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}
 body {{ background:#17231c; }}
-.grid {{ position:absolute; top:330px; left:0; right:0; display:flex; justify-content:center; gap:28px; }}
+.grid {{ position:absolute; top:240px; left:0; right:0; display:flex; flex-direction:column; align-items:center; gap:24px; }}
 </style></head><body>
 <div class="grid">{quadros}</div>
 <div class="box"><div class="line"></div><div class="txt">{texto}</div></div>
