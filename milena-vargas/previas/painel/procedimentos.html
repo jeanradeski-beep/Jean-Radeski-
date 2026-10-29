@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Procedimentos · Painel Milena Vargas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Questrial&display=swap">
+<link rel="stylesheet" href="../assets/painel.css">
+</head>
+<body data-page="procedimentos">
+<div class="app">
+  <aside class="side">
+    <a href="index.html"><img src="../assets/img/logo-light.png" alt="Milena Vargas · painel"></a>
+    <nav aria-label="Painel"><a href="index.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>Hoje</a><a href="agenda.html"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a><a href="pacientes.html"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.4 3.5 5.2"/></svg>Pacientes</a><a href="../ficha/ficha-a4.html"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/></svg>Ficha A4</a><a href="financeiro.html"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16V10M11 16V6M16 16v-4M21 16V8"/></svg>Financeiro</a><a href="procedimentos.html" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Procedimentos</a></nav>
+    <a class="site-link" href="../site/index.html">Ver o site →</a>
+    <div class="who"><span class="av">MV</span><span>Dra. Milena Vargas<br>CRBM 5 – 9505</span></div>
+  </aside>
+  <main class="main">
+
+    <div class="mtop">
+      <div><p class="sub">Valores usados no site, na agenda e no financeiro</p><h1>Procedimentos</h1></div>
+      <button class="btn btn-dark" id="salvar">Salvar alterações</button>
+    </div>
+    <div class="card tw" style="padding:6px 12px">
+      <table class="t"><thead><tr><th>Procedimento</th><th>Cartão</th><th class="n">À vista</th><th>Sessão</th><th>Duração</th><th>Retorno</th><th>Lembrete de manutenção</th></tr></thead><tbody id="tbody"></tbody></table>
+    </div>
+    <div class="card"><h2>Regras da clínica</h2>
+      <div class="kv"><div><span>Reagendamento</span>aviso com no mínimo 24 horas</div><div><span>Falta sem aviso</span>taxa de 15% do valor do procedimento</div><div><span>Parcelamento</span>até 3x no cartão · rinomodelação até 4x</div><div><span>Dias de atendimento</span>Erechim seg a qua · Florianópolis qui e sex</div></div>
+    </div>
+
+    <p class="example">Prévia do painel · pacientes, horários e números são exemplos. Procedimentos e valores vêm do material da Dra. Milena.</p>
+  </main>
+</div>
+<script src="../assets/dados.js"></script>
+<script src="../assets/painel.js"></script>
+</body>
+</html>

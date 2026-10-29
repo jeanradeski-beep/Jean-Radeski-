@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Agendar avaliação · Milena Vargas</title>
+<meta name="description" content="Escolha a cidade, o procedimento e o horário da sua avaliação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Questrial&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="../assets/img/logo-dark.png" alt="Milena Vargas · Biomedicina Estética" width="79" height="44"></a>
+    <nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="procedimentos.html">Procedimentos</a><a href="sobre.html">Sobre</a><a href="orientacoes.html">Orientações</a><a href="contato.html">Contato</a><a class="btn btn-dark btn-sm" href="agendar.html" style="color:var(--cream);border:0">Agendar avaliação</a></nav>
+    <details class="mobile"><summary>Menu</summary><nav aria-label="Principal (celular)"><a href="index.html">Início</a><a href="procedimentos.html">Procedimentos</a><a href="sobre.html">Sobre</a><a href="orientacoes.html">Orientações</a><a href="contato.html">Contato</a><a class="btn btn-dark" href="agendar.html">Agendar avaliação</a></nav></details>
+  </div>
+</header>
+<main>
+
+<div class="wrap crumbs"><a href="index.html">Início</a> / Agendar</div>
+<section class="wrap page-hero" style="padding-bottom:40px">
+  <p class="eyebrow">Agendamento</p>
+  <h1 class="t" style="margin-top:16px">Agende sua avaliação.</h1>
+  <p class="sync" style="margin-top:18px"><span class="dot"></span>Horários livres lidos da agenda Google da Dra. Milena</p>
+</section>
+<section class="wrap bookwrap">
+  <form class="book" id="bookForm" novalidate>
+    <div class="step"><h3>1 · Cidade</h3>
+      <div class="seg" id="units">
+        <button type="button" class="chip" data-unit="Erechim" aria-pressed="true">Erechim – RS<small>segunda a quarta</small></button>
+        <button type="button" class="chip" data-unit="Florianópolis" aria-pressed="false">Florianópolis – SC<small>quinta e sexta</small></button>
+      </div></div>
+    <div class="step"><h3>2 · Procedimento</h3><label for="proc">O que você quer avaliar?<select id="proc"><option value="aval">Avaliação facial (40 min)</option><option value="labios">Preenchimento labial (60 min)</option><option value="bio">Bioestimulador de colágeno (60 min)</option><option value="facial">Preenchimento facial (60 min)</option><option value="toxina">Toxina botulínica (30 min)</option><option value="rino">Rinomodelação (60 min)</option><option value="limpeza">Limpeza de pele (60 min)</option></select></label></div>
+    <div class="step"><h3>3 · Dia</h3><div class="seg" id="days"></div></div>
+    <div class="step"><h3>4 · Horário</h3><div class="times" id="times"></div></div>
+    <div class="step"><h3>5 · Seus dados</h3>
+      <div class="two"><label for="nome">Nome<input id="nome" value="Juliana" autocomplete="off"></label><label for="zap">WhatsApp<input id="zap" value="(54) 9 9999-0000" autocomplete="off" inputmode="tel"></label></div>
+    </div>
+    <label style="flex-direction:row;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink)"><input type="checkbox" id="ok" checked style="width:auto;margin-top:4px"><span>Li as <a href="orientacoes.html">orientações</a> sobre reagendamento com 24 horas de antecedência e taxa de 15% em caso de falta sem aviso.</span></label>
+    <button class="btn btn-dark" type="submit">Reservar horário</button>
+  </form>
+  <aside class="aside">
+    <div class="summary" id="summary" aria-live="polite"></div>
+    <div class="box"><h4>Prefere conversar antes?</h4><p>Fale direto com a Dra. Milena pelo WhatsApp.</p><a class="btn btn-wa btn-sm" style="margin-top:12px" href="https://wa.me/5554991590445?text=Ol%C3%A1%2C%20Dra.%20Milena%21%20Quero%20tirar%20uma%20d%C3%BAvida%20antes%20de%20agendar." target="_blank" rel="noopener">Abrir WhatsApp</a></div>
+    <div class="box"><h4>Formas de pagamento</h4><p>Cartão em até 3x (rinomodelação em até 4x) ou valor especial à vista.</p></div>
+  </aside>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap grid">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <img src="../assets/img/logo-light.png" alt="Milena Vargas · Biomedicina Estética">
+      <p>Realçando sua beleza com naturalidade, técnica e planejamento.</p>
+    </div>
+    <div><h4>Procedimentos</h4><ul><li><a href="preenchimento-labial.html">Preenchimento labial</a></li><li><a href="bioestimulador-de-colageno.html">Bioestimulador de colágeno</a></li><li><a href="preenchimento-facial.html">Preenchimento facial</a></li><li><a href="toxina-botulinica.html">Toxina botulínica</a></li><li><a href="rinomodelacao.html">Rinomodelação</a></li><li><a href="limpeza-de-pele.html">Limpeza de pele</a></li></ul></div>
+    <div><h4>Clínica</h4><ul><li><a href="sobre.html">Sobre a Dra. Milena</a></li><li><a href="orientacoes.html">Orientações</a></li><li><a href="agendar.html">Agendar avaliação</a></li><li><a href="contato.html">Contato e unidades</a></li></ul></div>
+    <div><h4>Atendimento</h4><ul><li>Erechim – RS</li><li>Florianópolis – SC</li><li><a href="https://wa.me/5554991590445?text=Ol%C3%A1%2C%20Dra.%20Milena%21%20Vim%20pelo%20site." target="_blank" rel="noopener">WhatsApp (54) 99159-0445</a></li><li><a href="https://www.instagram.com/dra.milenazvargas/" target="_blank" rel="noopener">@dra.milenazvargas</a></li></ul></div>
+  </div>
+  <div class="wrap base"><span>© 2026 Milena Vargas · Biomedicina Estética · Biomédica CRBM 5 – 9505</span><span>Prévia do site · proposta de Jean Radeski</span></div>
+</footer>
+<a class="btn btn-wa wa-float" href="https://wa.me/5554991590445?text=Ol%C3%A1%2C%20Dra.%20Milena%21%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">WhatsApp</a>
+<script src="../assets/dados.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

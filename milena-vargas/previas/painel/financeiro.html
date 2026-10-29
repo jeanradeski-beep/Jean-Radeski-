@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Financeiro · Painel Milena Vargas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Questrial&display=swap">
+<link rel="stylesheet" href="../assets/painel.css">
+</head>
+<body data-page="financeiro">
+<div class="app">
+  <aside class="side">
+    <a href="index.html"><img src="../assets/img/logo-light.png" alt="Milena Vargas · painel"></a>
+    <nav aria-label="Painel"><a href="index.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>Hoje</a><a href="agenda.html"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a><a href="pacientes.html"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.4 3.5 5.2"/></svg>Pacientes</a><a href="../ficha/ficha-a4.html"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/></svg>Ficha A4</a><a href="financeiro.html" aria-current="page"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16V10M11 16V6M16 16v-4M21 16V8"/></svg>Financeiro</a><a href="procedimentos.html"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Procedimentos</a></nav>
+    <a class="site-link" href="../site/index.html">Ver o site →</a>
+    <div class="who"><span class="av">MV</span><span>Dra. Milena Vargas<br>CRBM 5 – 9505</span></div>
+  </aside>
+  <main class="main">
+
+    <div class="mtop">
+      <div><p class="sub" id="mes"></p><h1>Financeiro</h1></div>
+      <div class="filters"><button class="f" aria-pressed="true">Mês</button><button class="f" aria-pressed="false">Trimestre</button><button class="f" aria-pressed="false">Ano</button></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span>Recebido no mês</span><b id="k1"></b><em>até hoje</em></div>
+      <div class="kpi"><span>A receber</span><b id="k2"></b><em>agendados até o fim do mês</em></div>
+      <div class="kpi"><span>Ticket médio</span><b id="k3"></b><em>por atendimento</em></div>
+      <div class="kpi"><span>Taxas de falta</span><b id="k4"></b><em id="k4e"></em></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h2>Por procedimento</h2><div class="bars" id="bars"></div></div>
+      <div class="card"><h2>Por cidade</h2><div class="split" id="split"></div><div class="legend" id="splitl" style="margin-top:10px"></div>
+        <h2 style="margin-top:24px">Forma de pagamento</h2><div class="split" id="forma"></div><div class="legend" id="formal" style="margin-top:10px"></div></div>
+    </div>
+    <div class="card tw" style="padding:6px 12px"><h2 style="padding:10px 0 0">Lançamentos do mês</h2>
+      <table class="t"><thead><tr><th>Data</th><th>Paciente</th><th>Procedimento</th><th>Cidade</th><th>Forma</th><th>Situação</th><th class="n">Valor</th></tr></thead><tbody id="tbody"></tbody></table>
+    </div>
+
+    <p class="example">Prévia do painel · pacientes, horários e números são exemplos. Procedimentos e valores vêm do material da Dra. Milena.</p>
+  </main>
+</div>
+<script src="../assets/dados.js"></script>
+<script src="../assets/painel.js"></script>
+</body>
+</html>
