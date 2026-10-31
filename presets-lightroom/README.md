@@ -10,6 +10,11 @@ luzes âmbar, verdes puxados para oliva e céus de pôr do sol / hora azul.
 | BRSF 03 Pôr do Sol Dourado | Golden hour / pôr do sol | Sky Capsule, Parque Tanguá, domo |
 | BRSF 04 Hora Azul | Céu azul-rosado + luzes acesas | Rifugio ao anoitecer |
 | BRSF 05 Drone Terroso | Aéreas e paisagens amplas | AJ Termas vista de drone |
+| BRSF 06 Interior Aconchego | Interiores de cabana, madeira | Container Zero Um, Lunnare |
+| BRSF 07 Gastronomia Rústica | Pratos, café, cestas | Risoto do Chalé Lunnare |
+| BRSF 08 Águas Termais | Piscinas, ofurôs, água | AJ Termas Iraí |
+| BRSF 09 Dunas e Lagoas | Praia, dunas, lagoas | Lençóis Maranhenses |
+| BRSF 10 Passeio Urbano | Parques e cidades | Jardim Botânico, Parque Tanguá |
 
 ## Como instalar
 - **Lightroom (celular):** baixe o `.zip`, extraia, abra uma foto → `Predefinições` → `⋯` → `Importar predefinições` → selecione os `.xmp`.
