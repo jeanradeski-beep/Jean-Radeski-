@@ -1,0 +1,81 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+   crs:PresetType="Normal"
+   crs:Cluster=""
+   crs:UUID="446962280D115406B108430C96E57DF8"
+   crs:SupportsAmount2="True"
+   crs:SupportsAmount="True"
+   crs:SupportsColor="True"
+   crs:SupportsMonochrome="False"
+   crs:SupportsHighDynamicRange="True"
+   crs:SupportsNormalDynamicRange="True"
+   crs:SupportsSceneReferred="True"
+   crs:SupportsOutputReferred="True"
+   crs:RequiresRGBTables="False"
+   crs:CameraModelRestrictive="False"
+   crs:Copyright="BR Sem Fronteiras"
+   crs:ContactInfo=""
+   crs:Version="15.0"
+   crs:ProcessVersion="11.0"
+   crs:Exposure2012="0"
+   crs:Texture="+15"
+   crs:Clarity2012="+12"
+   crs:Dehaze="+10"
+   crs:Vibrance="+6"
+   crs:Saturation="-12"
+   crs:PostCropVignetteStyle="1"
+   crs:PostCropVignetteMidpoint="50"
+   crs:PostCropVignetteFeather="60"
+   crs:PostCropVignetteRoundness="0"
+   crs:ColorGradeBlending="60"
+   crs:ColorGradeBalance="0"
+   crs:ToneCurveName2012="Custom"
+   crs:IncrementalTemperature="+10"
+   crs:IncrementalTint="+4"
+   crs:Contrast2012="+20"
+   crs:Highlights2012="-40"
+   crs:Shadows2012="+15"
+   crs:Whites2012="+8"
+   crs:Blacks2012="-20"
+   crs:HueAdjustmentOrange="+2"
+   crs:HueAdjustmentYellow="-22"
+   crs:HueAdjustmentGreen="-25"
+   crs:HueAdjustmentAqua="-10"
+   crs:SaturationAdjustmentOrange="+4"
+   crs:SaturationAdjustmentYellow="-22"
+   crs:SaturationAdjustmentGreen="-35"
+   crs:SaturationAdjustmentAqua="-20"
+   crs:SaturationAdjustmentBlue="-15"
+   crs:LuminanceAdjustmentYellow="-10"
+   crs:LuminanceAdjustmentGreen="-18"
+   crs:LuminanceAdjustmentBlue="-12"
+   crs:ColorGradeShadowHue="35"
+   crs:ColorGradeShadowSat="10"
+   crs:ColorGradeMidtoneHue="40"
+   crs:ColorGradeMidtoneSat="8"
+   crs:ColorGradeHighlightHue="45"
+   crs:ColorGradeHighlightSat="10"
+   crs:RedHue="+8"
+   crs:RedSaturation="+6"
+   crs:GreenHue="-12"
+   crs:GreenSaturation="-10"
+   crs:BlueHue="-6"
+   crs:PostCropVignetteAmount="-15"
+   crs:GrainAmount="6"
+   crs:GrainSize="25"
+   crs:GrainFrequency="50"
+   crs:HasSettings="True">
+   <crs:Name><rdf:Alt><rdf:li xml:lang="x-default">BRSF 05 Drone Terroso</rdf:li></rdf:Alt></crs:Name>
+   <crs:ShortName><rdf:Alt><rdf:li xml:lang="x-default"></rdf:li></rdf:Alt></crs:ShortName>
+   <crs:SortName><rdf:Alt><rdf:li xml:lang="x-default"></rdf:li></rdf:Alt></crs:SortName>
+   <crs:Group><rdf:Alt><rdf:li xml:lang="x-default">BR Sem Fronteiras</rdf:li></rdf:Alt></crs:Group>
+   <crs:Description><rdf:Alt><rdf:li xml:lang="x-default">Aereas e paisagens amplas: tons terrosos, verde dessaturado, mais definicao.</rdf:li></rdf:Alt></crs:Description>
+   <crs:ToneCurvePV2012><rdf:Seq><rdf:li>0, 14</rdf:li><rdf:li>64, 60</rdf:li><rdf:li>128, 128</rdf:li><rdf:li>192, 198</rdf:li><rdf:li>255, 248</rdf:li></rdf:Seq></crs:ToneCurvePV2012>
+   <crs:ToneCurvePV2012Red><rdf:Seq><rdf:li>0, 0</rdf:li><rdf:li>255, 255</rdf:li></rdf:Seq></crs:ToneCurvePV2012Red>
+   <crs:ToneCurvePV2012Green><rdf:Seq><rdf:li>0, 0</rdf:li><rdf:li>255, 255</rdf:li></rdf:Seq></crs:ToneCurvePV2012Green>
+   <crs:ToneCurvePV2012Blue><rdf:Seq><rdf:li>0, 0</rdf:li><rdf:li>255, 255</rdf:li></rdf:Seq></crs:ToneCurvePV2012Blue>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>
