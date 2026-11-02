@@ -1,0 +1,16 @@
+{
+  "name": "lembretes-whatsapp",
+  "version": "1.0.0",
+  "description": "Assistente de lembretes pelo WhatsApp",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test src/*.test.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@whiskeysockets/baileys": "6.7.24",
+    "pino": "^9.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
