@@ -6,16 +6,13 @@ const pino = require('pino');
 const qrcode = require('qrcode-terminal');
 const {
   default: makeWASocket, useMultiFileAuthState, DisconnectReason,
-  fetchLatestBaileysVersion, jidNormalizedUser,
+  fetchLatestBaileysVersion, jidNormalizedUser, generateMessageIDV2,
 } = require('@whiskeysockets/baileys');
 const { Bot } = require('./bot');
 const store = require('./store');
 
-const DONO = (process.env.DONO || '').replace(/\D/g, '');
-if (!DONO) {
-  console.error('❌ Defina seu número no arquivo .env (DONO=5541999999999). Veja .env.example');
-  process.exit(1);
-}
+// Sem DONO no .env = modo "meu próprio número": você conversa com o bot no chat "Você"
+let DONO = (process.env.DONO || '').replace(/\D/g, '');
 
 // Números BR podem aparecer com ou sem o 9 extra no WhatsApp
 function variantes(num) {
@@ -24,7 +21,7 @@ function variantes(num) {
   if (num.startsWith('55') && num.length === 12) v.add(num.slice(0, 4) + '9' + num.slice(4));
   return v;
 }
-const NUMEROS_DONO = variantes(DONO);
+let NUMEROS_DONO = variantes(DONO);
 const numeroDe = jid => (jid || '').split('@')[0].split(':')[0];
 
 let sock = null;
@@ -34,8 +31,10 @@ const jidDestino = () => bot.db.donoJid || `${DONO}@s.whatsapp.net`;
 
 async function enviar(texto) {
   if (!sock) throw new Error('WhatsApp desconectado');
-  const r = await sock.sendMessage(jidDestino(), { text: texto });
-  if (r?.key?.id) idsEnviados.add(r.key.id);
+  // Registra o ID antes de enviar, para o bot não ler a própria resposta no chat "Você"
+  const messageId = generateMessageIDV2(sock.user?.id);
+  idsEnviados.add(messageId);
+  await sock.sendMessage(jidDestino(), { text: texto }, { messageId });
 }
 
 const bot = new Bot(enviar);
@@ -53,7 +52,14 @@ async function conectar() {
       console.log('   WhatsApp > Configurações > Aparelhos conectados > Conectar aparelho\n');
       qrcode.generate(qr, { small: true });
     }
-    if (connection === 'open') console.log(`✅ Conectado como ${numeroDe(sock.user.id)}. Lembretes para ${DONO}.`);
+    if (connection === 'open') {
+      const meu = numeroDe(sock.user.id);
+      if (!DONO) { DONO = meu; NUMEROS_DONO = variantes(DONO); }
+      console.log(`✅ Conectado como ${meu}.`);
+      console.log(DONO === meu
+        ? '👉 Modo próprio número: abra o chat "Você" (mensagem para si mesmo) no WhatsApp e mande "ajuda".'
+        : `👉 Lembretes serão enviados para ${DONO}.`);
+    }
     if (connection === 'close') {
       const code = lastDisconnect?.error?.output?.statusCode;
       if (code === DisconnectReason.loggedOut) {
@@ -66,10 +72,12 @@ async function conectar() {
   });
 
   sock.ev.on('messages.upsert', async ({ messages, type }) => {
-    if (type !== 'notify') return;
+    if (type !== 'notify' && type !== 'append') return;
     for (const m of messages) {
       try {
         if (!m.message || idsEnviados.has(m.key.id)) continue;
+        // Ignora histórico antigo (só mensagens dos últimos 2 minutos)
+        if (Date.now() / 1000 - Number(m.messageTimestamp || 0) > 120) continue;
         const remoto = m.key.remoteJid || '';
         if (remoto.endsWith('@g.us') || remoto === 'status@broadcast') continue;
 
@@ -77,7 +85,10 @@ async function conectar() {
         const candidatos = [remoto, m.key.senderPn, m.key.participantPn].map(numeroDe);
         const doDono = !m.key.fromMe && candidatos.some(n => NUMEROS_DONO.has(n));
         // Modo "um número só": você manda no chat "Você" (mensagem para si mesmo)
-        const chatProprio = m.key.fromMe && numeroDe(jidNormalizedUser(remoto)) === meuNumero && NUMEROS_DONO.has(meuNumero);
+        const meuLid = numeroDe(sock.user?.lid);
+        const numRemoto = numeroDe(jidNormalizedUser(remoto));
+        const chatProprio = m.key.fromMe && NUMEROS_DONO.has(meuNumero) &&
+          (numRemoto === meuNumero || (meuLid && numRemoto === meuLid));
         if (!doDono && !chatProprio) continue;
 
         const texto = m.message.conversation || m.message.extendedTextMessage?.text || '';

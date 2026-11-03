@@ -25,13 +25,14 @@ Se faltar dia ou horário, o bot pergunta.
 
 Comandos: `lista`, `cancelar 3`, `sair`, `ajuda`.
 
-## Precisa de 2 números
+## Usando o seu próprio número (padrão)
 
-- **Número do bot**: um chip extra (ou WhatsApp Business num segundo número). É ele que fica conectado.
-- **Seu número**: você conversa com o bot e recebe os lembretes como notificação normal.
+O bot se conecta ao **seu WhatsApp** como um "aparelho conectado" (igual ao WhatsApp Web).
+Você conversa com ele no chat **"Você"** (mensagem para si mesmo) e os lembretes chegam nesse chat.
 
-> Dá para usar só o seu número (mandando no chat "Você"/mensagem para si mesmo),
-> mas aí o WhatsApp **não toca notificação**, porque a mensagem vem de você mesmo.
+> ⚠️ Como a mensagem vem de você mesmo, o WhatsApp **não toca notificação**.
+> Dica: fixe o chat "Você" no topo para ver os lembretes.
+> Se um dia quiser que toque, coloque outro número em `DONO` no `.env` (ex: um chip extra conectado no bot).
 
 ## Instalação
 
@@ -40,13 +41,13 @@ Requisitos: Node.js 18+ e um computador/servidor ligado 24h (ex: VPS, Raspberry 
 ```bash
 cd lembretes-whatsapp
 npm install
-cp .env.example .env     # coloque seu número em DONO=55DDDNUMERO
+cp .env.example .env     # deixe DONO vazio para usar o seu próprio número
 npm start
 ```
 
 1. Aparece um QR Code no terminal.
-2. No celular do **número do bot**: WhatsApp > Configurações > Aparelhos conectados > Conectar aparelho.
-3. Pronto. Do **seu** número, mande `ajuda` para o bot.
+2. No seu celular: WhatsApp > Configurações > Aparelhos conectados > Conectar aparelho.
+3. Abra o chat **"Você"** e mande `ajuda`.
 
 A sessão fica salva na pasta `auth/` (não precisa escanear de novo) e os eventos em `data/eventos.json`.
 
@@ -55,8 +56,8 @@ Para manter rodando sempre: `npx pm2 start src/index.js --name lembretes`.
 ## Observações
 
 - Usa a biblioteca [Baileys](https://github.com/WhiskeySockets/Baileys) (conexão não oficial, igual ao WhatsApp Web).
-  Para uso pessoal funciona bem; evite mandar mensagens em massa para não arriscar bloqueio do número do bot.
-- Só o número em `DONO` consegue usar o bot.
+  Para uso pessoal funciona bem; como só manda mensagens para você mesmo, o risco de bloqueio é muito baixo.
+- Só você consegue usar o bot (ele ignora conversas com outras pessoas e grupos).
 - Se o bot ficar desligado na hora de um lembrete, ele envia assim que voltar (marcado como "atrasado" se passou do evento).
 
 ## Testes
