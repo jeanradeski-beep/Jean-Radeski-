@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{width:1080px;height:1920px;overflow:hidden;font-family:Montserrat,sans-serif}
+.s{position:relative;width:1080px;height:1920px;overflow:hidden}.bg,.bl{position:absolute;inset:0;background-size:cover;background-position:center}
+.bl{filter:blur(18px);transform:scale(1.05)}.t{position:absolute;inset:0}
+.txt{position:absolute;left:100px;right:100px;text-align:center;color:var(--ink);text-shadow:var(--sh)}
+.ov{font-size:24px;letter-spacing:.34em;text-transform:uppercase;color:var(--ov);font-weight:500}
+.rule{width:110px;height:2px;margin:26px auto;background:var(--rule)}
+h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:86px;line-height:1.02}
+h2{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:52px;line-height:1.15;margin-top:12px;color:var(--h2)}
+.sub{font-size:29px;font-weight:400;line-height:1.5;margin-top:22px;color:var(--muted)}
+.logo{position:absolute;left:50%;transform:translateX(-50%);filter:drop-shadow(0 2px 10px rgba(0,0,0,.45))}.logo img{width:100%;display:block}
+.tl{position:absolute;left:100px;right:100px;bottom:190px;color:var(--ink);text-shadow:var(--sh)}
+.tl .row{position:relative;display:flex;justify-content:space-between}
+.tl .row:before{content:"";position:absolute;left:8px;right:8px;top:50%;height:2px;background:var(--rule)}
+.tl i{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink);background:rgb(var(--band));position:relative}.tl i.f{background:var(--ink)}
+.tl .v,.tl .l{display:flex;justify-content:space-between}.tl .v{font-family:"Cormorant Garamond",serif;font-size:44px;font-weight:500;margin-bottom:20px}
+.tl .l{font-size:19px;letter-spacing:.24em;margin-top:22px;color:var(--muted);font-weight:500}
+.tl span{width:190px;text-align:center}.tl span:first-child{text-align:left}.tl span:last-child{text-align:right}</style></head><body><div class="s" style="--band:166,140,115;--ink:#f4f1ea;--h2:#f9f4ee;--muted:#f4f1ea;--ov:#f4f1ea;--rule:linear-gradient(90deg,#f4f1ea,#f9f4ee,#f4f1ea);--sh:0 1px 14px rgba(70,50,30,.35)"><div class="bg" style="background-image:url(../../fotos-aj/aerea.jpg)"></div><div class="bl" id="blA" style="background-image:url(../../fotos-aj/aerea.jpg)"></div><div class="t" id="tA"></div><div class="bl" id="blB" style="background-image:url(../../fotos-aj/aerea.jpg)"></div><div class="t" id="tB"></div><div class="txt" data-side="top" style="top:200px"><div class="ov">Desafio do sorteio</div><div class="rule"></div><h1>Cada comentário</h1><h2>nos aproxima do brinde</h2></div><div class="tl"><div class="v"><span>5 mil</span><span>10 mil</span><span>15 mil</span><span>20 mil</span></div><div class="row"><i></i><i></i><i></i><i class="f"></i></div><div class="l"><span>COMECE</span><span>CONTINUE</span><span>QUASE LÁ</span><span>BRINDE</span></div></div><script>
+(function(){var B='166,140,115',hi=0.93,lo=0.85,H=1920;
+function band(id,tid,dir,edgePx){var a=(edgePx+40)/H*100,b=a+12;
+document.getElementById(id).style.webkitMaskImage='linear-gradient('+dir+',#000 0%,#000 '+a+'%,transparent '+b+'%)';
+document.getElementById(tid).style.background='linear-gradient('+dir+',rgba('+B+','+hi+') 0%,rgba('+B+','+lo+') '+a+'%,rgba('+B+',0) '+b+'%)';}
+var x=document.querySelector('.txt'),r=x.getBoundingClientRect();
+if(x.dataset.side=='top')band('blA','tA','180deg',r.bottom);else band('blA','tA','0deg',H-r.top);
+var tl=document.querySelector('.tl');if(tl){var q=tl.getBoundingClientRect();band('blB','tB','0deg',H-q.top);}
+})();</script></div></body></html>

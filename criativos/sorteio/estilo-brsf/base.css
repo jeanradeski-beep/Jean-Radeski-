@@ -1,0 +1,27 @@
+:root{--verde:#1c3e3f;--dourado:#d2b78c;--champanhe:#c9baa9;--bronze:#a68c73;--creme:#f9f4ee}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;font-family:Montserrat,sans-serif;color:var(--creme)}
+.s{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--verde)}
+.bg,.blur{position:absolute;inset:0;background-size:cover;background-position:center}
+.blur{filter:blur(30px) saturate(.7);transform:scale(1.08)}
+.mt{-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 var(--a,22%),transparent var(--b,34%))}
+.mb{-webkit-mask-image:linear-gradient(0deg,#000 0%,#000 var(--a,22%),transparent var(--b,34%))}
+.tt{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,62,63,.94) 0%,rgba(28,62,63,.86) var(--a,22%),rgba(28,62,63,0) var(--b,34%))}
+.tb{position:absolute;inset:0;background:linear-gradient(0deg,rgba(28,62,63,.95) 0%,rgba(28,62,63,.86) var(--a,22%),rgba(28,62,63,0) var(--b,34%))}
+.txt{position:absolute;left:100px;right:100px;text-align:center}
+.ov{font-size:26px;font-weight:400;letter-spacing:.34em;color:var(--dourado);text-transform:uppercase}
+.rule{width:120px;height:2px;margin:30px auto;background:linear-gradient(90deg,var(--bronze),var(--dourado),var(--champanhe))}
+h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:100px;line-height:1.02;letter-spacing:-.005em}
+h2{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:58px;line-height:1.15;color:var(--dourado);margin-top:18px}
+.sub{font-size:32px;font-weight:300;line-height:1.5;color:var(--champanhe);margin-top:30px}
+.logo{position:absolute;left:50%;transform:translateX(-50%);width:200px}
+.logo img{width:100%;display:block}
+.tl{position:absolute;left:100px;right:100px}
+.tl .row{position:relative;display:flex;justify-content:space-between}
+.tl .row:before{content:"";position:absolute;left:8px;right:8px;top:50%;height:2px;background:linear-gradient(90deg,var(--bronze),var(--dourado),var(--champanhe))}
+.tl .d{width:16px;height:16px;border-radius:50%;background:var(--verde);border:2px solid var(--dourado);position:relative}
+.tl .d.f{background:var(--dourado)}
+.tl .v,.tl .l{display:flex;justify-content:space-between}
+.tl .v{font-family:"Cormorant Garamond",serif;font-size:46px;font-weight:500;color:var(--creme);margin-bottom:22px}
+.tl .l{font-size:20px;letter-spacing:.24em;color:var(--champanhe);margin-top:24px}
+.tl span{width:190px;text-align:center}.tl span:first-child{text-align:left}.tl span:last-child{text-align:right}

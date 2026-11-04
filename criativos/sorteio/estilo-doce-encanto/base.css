@@ -1,0 +1,32 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;font-family:Montserrat,sans-serif;color:#f5efe4}
+.s{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0f1a12}
+.bg,.blur{position:absolute;inset:0;background-size:cover;background-position:center}
+.blur{filter:blur(28px) saturate(.9);transform:scale(1.08)}
+.top .blur{-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 16%,transparent 26%)}
+.bot .blur{-webkit-mask-image:linear-gradient(0deg,#000 0%,#000 18%,transparent 30%)}
+.tint{position:absolute;inset:0}
+.top .tint{background:linear-gradient(180deg,rgba(14,30,18,.88) 0%,rgba(14,30,18,.7) 15%,rgba(14,30,18,0) 27%)}
+.bot .tint{background:linear-gradient(0deg,rgba(14,30,18,.92) 0%,rgba(14,30,18,.75) 18%,rgba(14,30,18,0) 32%)}
+.txt{position:absolute;left:90px;right:90px}
+.top .txt{top:130px}
+.bot .txt{bottom:190px}
+.eb{display:flex;align-items:center;gap:24px;font-size:28px;font-weight:500;letter-spacing:.32em;color:#e0a35e}
+.eb:before{content:"";width:70px;height:2px;background:#e0a35e}
+h1{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:88px;line-height:1.08;margin-top:34px;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.sub{font-size:34px;font-weight:400;line-height:1.4;margin-top:30px;opacity:.95}
+.tl{position:absolute;left:90px;right:90px;bottom:200px}
+.tl .row{position:relative;display:flex;justify-content:space-between}
+.tl .row:before{content:"";position:absolute;left:6px;right:6px;top:50%;height:1px;background:rgba(245,239,228,.45)}
+.tl .d{width:14px;height:14px;border-radius:50%;background:#e0a35e;position:relative;box-shadow:0 0 0 5px rgba(224,163,94,.25)}
+.tl .v,.tl .l{display:flex;justify-content:space-between}
+.tl .v{font-size:32px;font-weight:600;color:#e0a35e;margin-bottom:22px}
+.tl .l{font-size:22px;letter-spacing:.2em;margin-top:24px}
+.tl span{width:180px;text-align:center}
+.tl span:first-child{text-align:left}.tl span:last-child{text-align:right}
+.top.tall .blur{-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 24%,transparent 36%)}
+.top.tall .tint{background:linear-gradient(180deg,rgba(14,30,18,.92) 0%,rgba(14,30,18,.82) 22%,rgba(14,30,18,0) 37%)}
+.bot.tall .blur{-webkit-mask-image:linear-gradient(0deg,#000 0%,#000 28%,transparent 42%)}
+.bot.tall .tint{background:linear-gradient(0deg,rgba(14,30,18,.95) 0%,rgba(14,30,18,.85) 26%,rgba(14,30,18,0) 42%)}
+.blurb{-webkit-mask-image:linear-gradient(0deg,#000 0%,#000 14%,transparent 24%)!important}
+.tintb{background:linear-gradient(0deg,rgba(14,30,18,.9) 0%,rgba(14,30,18,.7) 14%,rgba(14,30,18,0) 26%)!important}

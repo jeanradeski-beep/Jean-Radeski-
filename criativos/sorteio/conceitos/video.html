@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{width:1080px;height:1920px;overflow:hidden;background:#000}
+.sc{position:absolute;inset:0;opacity:0}.bg{position:absolute;inset:-2%;background-size:cover;background-position:center}
+.sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 62%,rgba(0,0,0,.8))}
+.tx{position:absolute;left:90px;right:90px;bottom:430px;text-align:center;color:#fff}
+.ov{text-shadow:0 1px 10px rgba(0,0,0,.8);font:500 24px Inter;letter-spacing:.42em;color:#e9d8b4;margin-bottom:26px}
+.h{font:500 italic 96px/1.05 "Cormorant Garamond";text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.s2{font:400 30px Inter;letter-spacing:.06em;color:rgba(255,255,255,.88);margin-top:26px}
+.w{display:inline-block;opacity:0;white-space:pre}
+.cnt{font:500 230px/1 "Cormorant Garamond";letter-spacing:-.02em}
+.logo{position:absolute;left:50%;bottom:210px;width:220px;margin-left:-110px;opacity:0;filter:drop-shadow(0 2px 12px rgba(0,0,0,.5))}
+</style></head><body>
+<div id="root"></div>
+<script>
+const P='../../fotos-aj/';
+const S=[
+ {img:P+'domos-noite.jpg',t0:0,t1:3.4,ov:'SORTEIO AJ TERMAS',h:'Uma noite entre os domos',s:''},
+ {img:P+'quarto-lua.jpg',t0:3.0,t1:6.4,ov:'',h:'um quarto esperando por você',s:''},
+ {img:P+'aerea.jpg',t0:6.0,t1:10.0,ov:'A META',h:'',s:'comentários no post do sorteio',cnt:1},
+ {img:P+'banheira.jpg',t0:9.6,t1:13.0,ov:'BATENDO A META',h:'tem espumante gelando no quarto',s:''},
+ {img:'../../9x16/aj-noite-916.jpg',t0:12.6,t1:16.0,ov:'PARTICIPE',h:'Comente e marque quem vai com você',s:'',logo:1},
+];
+const root=document.getElementById('root');
+S.forEach((c,i)=>{const d=document.createElement('div');d.className='sc';d.innerHTML=`<div class="bg" style="background-image:url(${c.img})"></div><div class="sh"></div>
+<div class="tx">${c.ov?`<div class="ov w">${c.ov}</div><br>`:''}${c.cnt?'<div class="cnt w">0</div>':''}${c.h?'<div class="h">'+c.h.split(' ').map(w=>`<span class="w">${w} </span>`).join('')+'</div>':''}${c.s?`<div class="s2 w">${c.s}</div>`:''}</div>${c.logo?'<img class="logo" src="../../marca/logo-horizontal-branco.png">':''}`;root.appendChild(d);c.el=d;});
+const ease=x=>x<0?0:x>1?1:1-Math.pow(1-x,3);
+function reveal(el,t){const k=ease(t/0.7);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*30}px)`;el.style.filter=`blur(${(1-k)*10}px)`;}
+window.render=function(t){S.forEach((c,i)=>{const d=c.el,lt=t-c.t0,dur=c.t1-c.t0;
+ let o=Math.min(1,lt/0.4,(c.t1-t)/0.4);if(i==0)o=Math.min(1,(c.t1-t)/0.4);if(i==S.length-1)o=Math.min(1,lt/0.4);d.style.opacity=Math.max(0,o);
+ const p=Math.max(0,Math.min(1,lt/dur));d.querySelector('.bg').style.transform=`scale(${1.0+0.10*p}) translateY(${(i%2?-1:1)*p*20}px)`;
+ const ws=[...d.querySelectorAll('.w')];ws.forEach((w,j)=>reveal(w,lt-0.35-j*0.16));
+ const cn=d.querySelector('.cnt');if(cn){const k=ease((lt-0.5)/2.4);cn.textContent=Math.round(k*20000).toLocaleString('pt-BR');}
+ const lg=d.querySelector('.logo');if(lg){const k=ease((lt-1.6)/0.8);lg.style.opacity=k;}
+});};
+render(0);
+</script></body></html>
